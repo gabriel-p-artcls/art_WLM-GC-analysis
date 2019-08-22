@@ -23,12 +23,13 @@ There is also an analysis of the custer in [Larsen et al. (2014)](https://www.aa
 
 ## Structural analysis
 
-The center of the cluster is `(0:01:49.48, -15:27:30.7), (0.4561667, -15.4585277) deg` in J2000.0 according to [Billet et al. (2001)](http://iopscience.iop.org/article/10.1086/339181/fulltext/). See the GC at [Aladin](http://aladin.unistra.fr/AladinLite/?target=00+01+49.480-15+27+30.70&fov=0.10&survey=P%2FDSS2%2Fcolor).
+The center of the cluster is `(0:01:49.48, -15:27:30.7), (0.4561667, -15.4585277) deg` in J2000.0 according to [Billet et al. (2001)](http://iopscience.iop.org/article/10.1086/339181/fulltext/). See the GC at
+[Aladin](http://aladin.unistra.fr/AladinLite/?target=00+01+49.480-15+27+30.70&fov=0.10&survey=P%2FDSS2%2Fcolor).
 
 The cluster's radii are (using the scale 0.045 arcsec/pixel for [HST-WFC3 (UVIS)](http://www.stsci.edu/hst/wfc3/ins_performance/detectors) observations):
 
-    r_c=1.09'' (~24 px)
-    r_t=31''   (~690 px)
+    r_c = 1.09'' (~24 px)
+    r_t = 31''   (~690 px)
     
 according to Hodge et al.
 
@@ -41,7 +42,7 @@ According to Hodge et al., its fundamental parameters are:
 
 > "*A best fit to theoretical isochrones indicates that this cluster has a metallicity of [Fe/H]=-1.52+-0.08 and an age of 14.8+-0.6 Gyr, thus indicating that it is similar to normal old halo globulars in our Galaxy. From the fit we also find that the distance modulus of the cluster is 24.73+-0.07 and the extinction is AV=0.07+-0.06.*"
 
-The logarithmic age is thus ~10.17, and the metallicity z~0.00046 (using z_0=0.0152).
+The logarithmic age is thus log(age)\~10.17, and the metallicity z\~0.00046 (using z_0=0.0152).
 
 
 ## Analyis with ASteCA
