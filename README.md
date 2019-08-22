@@ -4,8 +4,9 @@
 Photometric analysis of the WLM-GC globular cluster located in the [WLM galaxy](https://en.wikipedia.org/wiki/Wolf%E2%80%93Lundmark%E2%80%93Melotte).
 The photometric data used in the analysis comes from the [Hodge et al. (1999)](http://adsabs.harvard.edu/abs/1999ApJ...521..577H) article, and corresponds to observations in the `V,I` filters.
 
+**Fig 1 from *Hodge et al (1999).**
+
 ![](fig1_hodge.png)
-**Fig 1 from *Hodge et al (1999).***
 
 
 
