@@ -1,0 +1,61 @@
+#
+# [ASteCA v0.2.4-dev]
+#
+# Created:  [2019-08-09 14:58:25]
+# Modified: [2019-08-09 14:58:25]
+#
+# NAME: Cluster's name.
+# c_x: Cluster's x center coordinate.
+# c_y: Cluster's y center coordinate.
+# r_cl: Cluster's radius.
+# e_rcl: Cluster's radius error.
+# r_c: Core radius (3-P King profile).
+# e_rc: Core radius error.
+# r_t: Tidal radius (3-P King profile).
+# e_rt: Tidal radius error.
+# kcp: King's profile concentration parameter.
+#
+# CI: 'Contamination index' is a  measure of the contamination of field
+#      stars in the cluster region. The closer to 1, the more contaminated 
+#      the cluster region is.
+# n_memb_k: Approximate number of cluster's members obtained integrating the
+#         fitted 3-P King profile (if it converged).
+# n_memb: Approximate number of cluster's members assuming a uniform
+#       background.
+# n_memb_da: Approximate number of cluster's members obtained via the DA
+#          algorithm.
+# memb_par: Members parameter comparing the approximate structural number of
+#           members ('n_memb') with the approximate photometric number of
+#           members ('n_memb_da').
+# a_f: Fraction of cluster's area that is present in frame.
+#
+# Parameters values are in the sense: mean, MAP/ML, median, mode.
+# Parameters uncertainties are: 16th, 84th percentiles, and STDDEV.
+# z: Metallicity value.
+# a: log(age).
+# E: extinction E(B-V).
+# d: Distance modulus.
+# M: Total initial mass.
+# b: Binary fraction.
+# Nt: Number of samples used to estimate the parameters values.
+#
+# f1 The background value is smaller than a third of the maximum radial
+#    density value.
+# f2 Not enough points found stabilized around the background value -->
+#    clust_rad was set to the middle value in the density profile.
+# f3 The delta range around the background used to attain the stable
+#    condition to determine the radius is greater than 10%%. This indicates
+#    a possible variable background.
+# f4 The process to fit a 3-P King profile to the density points did not
+#    converge or did so to a tidal radius beyond the ranges of the frame.
+# f5 The number of approximate structural cluster members ('n_memb') is <10.
+# f6 The number of approximate structural and photometric cluster members
+#    differ greatly --> abs(n_memb_par) > 0.33.
+#
+# FC (flags count): Sum of all the flags values. The bigger this value the
+#    more likely it is that there's a problem with the frame, ie: no
+#    cluster, more than one cluster present in the frame, variable or too
+#    crowded field, etc.
+#
+#NAME                   c_x        c_y       r_cl      e_rcl        r_c       e_rc        r_t       e_rt      kcp      CI   n_memb_k     n_memb  n_memb_da  memb_par     a_f     z_mean      z_MAP   z_median     z_mode       16th       84th        std    R^2     a_mean      a_MAP   a_median     a_mode       16th       84th        std    R^2     E_mean      E_MAP   E_median     E_mode       16th       84th        std    R^2     d_mean      d_MAP   d_median     d_mode       16th       84th        std    R^2     M_mean      M_MAP   M_median     M_mode       16th       84th        std    R^2     b_mean      b_MAP   b_median     b_mode       16th       84th        std    R^2         Nt      f1 f2 f3 f4 f5 f6  FC
+WLM_GC2                 425        400        250          0        nan        nan        nan        nan      nan     nan        nan         -1        nan       inf    0.43 0.00014349 0.00013561 0.00013561  0.0001299 0.00011903 0.00014886 4.1799e-05   0.57      10.01      9.943      10.01      9.949      9.943      10.12    0.07767   0.87     0.0401     0.0472     0.0472     0.0465     0.0284     0.0476     0.0132   0.66     25.077      25.09      25.09     25.088     25.022     25.101   0.083147   0.83 4.3333e+05      4e+05 4.0606e+05 4.0606e+05 4.0029e+05 4.7553e+05 5.1373e+04    0.7        0.0        0.0        0.0        0.0        nan        nan        nan    nan   1.78E+04       1  0  0  1  1  0   3
