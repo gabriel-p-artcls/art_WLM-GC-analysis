@@ -18,7 +18,8 @@ Hodge et al. comment about this data:
 
 Because of this the entire frame was processed as part of the GC, with no membership analysis applied.
 
-There is also an analysis of the custer in [Larsen et al. (2014)](https://www.aanda.org/articles/aa/abs/2014/05/aa22672-13/aa22672-13.html).
+There is also an analysis of the cluster in [Larsen et al. (2014)](https://www.aanda.org/articles/aa/abs/2014/05/aa22672-13/aa22672-13.html),
+and a morphological analysis in [Stephens et al. (2005)](https://arxiv.org/abs/astro-ph/0511502).
 
 
 ## Structural analysis
