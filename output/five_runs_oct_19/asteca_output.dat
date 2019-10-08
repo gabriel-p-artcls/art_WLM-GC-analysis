@@ -1,0 +1,65 @@
+#
+# [ASteCA v0.2.7-dev]
+#
+# Created:  [2019-10-07 15:09:43]
+# Modified: [2019-10-07 15:14:24]
+#
+# NAME: Cluster's name.
+# c_x: Cluster's x center coordinate.
+# c_y: Cluster's y center coordinate.
+# r_cl: Cluster's radius.
+# e_rcl: Cluster's radius error.
+# r_c: Core radius (3-P King profile).
+# e_rc: Core radius error.
+# r_t: Tidal radius (3-P King profile).
+# e_rt: Tidal radius error.
+# kcp: King's profile concentration parameter.
+#
+# CI: 'Contamination index' is a  measure of the contamination of field
+#      stars in the cluster region. The closer to 1, the more contaminated 
+#      the cluster region is.
+# n_memb_k: Approximate number of cluster's members obtained integrating the
+#         fitted 3-P King profile (if it converged).
+# n_memb: Approximate number of cluster's members assuming a uniform
+#       background.
+# n_memb_da: Approximate number of cluster's members obtained via the DA
+#          algorithm.
+# memb_par: Members parameter comparing the approximate structural number of
+#           members ('n_memb') with the approximate photometric number of
+#           members ('n_memb_da').
+# a_f: Fraction of cluster's area that is present in frame.
+#
+# Parameters values are in the sense: mean, MAP/ML, median, mode.
+# Parameters uncertainties are: 16th, 84th percentiles, and STDDEV.
+# z: Metallicity value.
+# a: log(age).
+# E: extinction E(B-V).
+# d: Distance modulus.
+# M: Total initial mass.
+# b: Binary fraction.
+# Nt: Number of samples used to estimate the parameters values.
+#
+# f1 The background value is smaller than a third of the maximum radial
+#    density value.
+# f2 Not enough points found stabilized around the background value -->
+#    clust_rad was set to the middle value in the density profile.
+# f3 The delta range around the background used to attain the stable
+#    condition to determine the radius is greater than 10%%. This indicates
+#    a possible variable background.
+# f4 The process to fit a 3-P King profile to the density points did not
+#    converge or did so to a tidal radius beyond the ranges of the frame.
+# f5 The number of approximate structural cluster members ('n_memb') is <10.
+# f6 The number of approximate structural and photometric cluster members
+#    differ greatly --> abs(n_memb_par) > 0.33.
+#
+# FC (flags count): Sum of all the flags values. The bigger this value the
+#    more likely it is that there's a problem with the frame, ie: no
+#    cluster, more than one cluster present in the frame, variable or too
+#    crowded field, etc.
+#
+#NAME                   c_x        c_y       r_cl      e_rcl        r_c       e_rc        r_t       e_rt      kcp      CI   n_memb_k     n_memb  n_memb_da  memb_par     a_f     z_mean      z_MAP   z_median     z_mode       16th       84th        std    R^2     a_mean      a_MAP   a_median     a_mode       16th       84th        std    R^2     E_mean      E_MAP   E_median     E_mode       16th       84th        std    R^2     d_mean      d_MAP   d_median     d_mode       16th       84th        std    R^2     M_mean      M_MAP   M_median     M_mode       16th       84th        std    R^2     b_mean      b_MAP   b_median     b_mode       16th       84th        std    R^2         Nt      f1 f2 f3 f4 f5 f6  FC
+WLM_GC2                 425        400        250          0        nan        nan        nan        nan      nan     nan        nan         -1        nan       inf    0.43  0.0001423 0.00013485 0.00013485 0.00013016 0.00011737 0.00017176 3.1009e-05   0.77      10.15      10.16      10.16      10.16      10.15      10.17    0.02791   0.77     0.0413     0.0402     0.0402     0.0405     0.0362     0.0516     0.0115   0.85     25.019     24.987     24.987      24.99     24.973     25.087   0.086314   0.68 4.4564e+05 4.0631e+05 4.2107e+05 4.1364e+05 4.0631e+05 4.9667e+05  5.285e+04   0.78        0.0        0.0        0.0        0.0        nan        nan        nan    nan   1.19E+04       1  0  0  1  1  0   3
+WLM_GC2                 425        400        250          0        nan        nan        nan        nan      nan     nan        nan         -1        nan       inf    0.43 0.00017176 0.00018797 0.00018797 0.00018807 0.00012006 0.00018924 3.8779e-05   0.78      10.16      10.18      10.18      10.18      10.14      10.18    0.03454   0.62     0.0397     0.0434     0.0434     0.0436     0.0265     0.0497     0.0142   0.84     25.056      25.05      25.05     25.052     24.999     25.077   0.088321   0.66 4.9325e+05 5.0354e+05 5.0354e+05 5.0091e+05 4.3841e+05 5.1485e+05 4.7871e+04   0.87        0.0        0.0        0.0        0.0        nan        nan        nan    nan   1.91E+04       1  0  0  1  1  0   3
+WLM_GC2                 425        400        250          0        nan        nan        nan        nan      nan     nan        nan         -1        nan       inf    0.43 0.00013382 0.00011966 0.00011966 0.00011948 0.00011874 0.00015704 3.7237e-05   0.56      10.17      10.19      10.19      10.18      10.14      10.19    0.03461   0.66     0.0275     0.0253     0.0253     0.0248     0.0121      0.049     0.0154   0.87     25.092     25.112     25.112     25.099     25.018     25.112   0.094611   0.77 4.6899e+05 4.5465e+05 4.5465e+05 4.5364e+05 4.3647e+05 5.0839e+05 4.8856e+04   0.75        0.0        0.0        0.0        0.0        nan        nan        nan    nan   1.78E+04       1  0  0  1  1  0   3
+WLM_GC2                 425        400        250          0        nan        nan        nan        nan      nan     nan        nan         -1        nan       inf    0.43 0.00013646 0.00011029 0.00011853 0.00011482 0.00011029 0.00017659 3.6035e-05   0.79      10.16      10.16      10.16      10.16      10.13      10.19    0.03291    0.8      0.025     0.0164     0.0164     0.0162     0.0076     0.0507     0.0182   0.87     25.118     25.154     25.153      25.15     24.988      25.16    0.10003    0.9 4.7628e+05 4.8067e+05 4.8067e+05 4.7909e+05 4.2483e+05 5.1053e+05 4.7964e+04   0.88        0.0        0.0        0.0        0.0        nan        nan        nan    nan   7.55E+03       1  0  0  1  1  0   3
+WLM_GC2                 425        400        250          0        nan        nan        nan        nan      nan     nan        nan         -1        nan       inf    0.43 0.00013945 0.00012479 0.00012573 0.00012587  0.0001215 0.00016696 3.5033e-05   0.73      10.15      10.16      10.16      10.16      10.16      10.16    0.02167   0.66     0.0374     0.0412     0.0412     0.0412     0.0243     0.0444     0.0132    0.8     25.072     24.993     24.993       25.0     24.993     25.137    0.15008   0.66 4.5831e+05 4.2009e+05 4.2068e+05 4.2455e+05 4.2009e+05 5.2397e+05  6.139e+04   0.74        0.0        0.0        0.0        0.0        nan        nan        nan    nan   6.80E+03       1  0  0  1  1  0   3
