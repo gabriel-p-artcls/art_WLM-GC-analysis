@@ -21,6 +21,7 @@ def main(nstd=2.):
     files = glob.glob('*.txt')
     xy_cols = "RA(deg)", "Dec(deg)"
     color_col_name = 'LogAge'
+    N_btstrp = 10000
 
     for file_name in files:
         print(file_name)
@@ -32,7 +33,6 @@ def main(nstd=2.):
 
         # Bootstrap uncertainties in theta
         N_pts = len(points)
-        N_btstrp = 10000
         theta_btstrp, ecc_btstrp = np.empty(N_btstrp), np.empty(N_btstrp)
         for i in range(N_btstrp):
             msk = np.random.choice(range(N_pts), size=N_pts, replace=True)
