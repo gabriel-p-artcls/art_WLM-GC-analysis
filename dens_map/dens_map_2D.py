@@ -5,18 +5,35 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import matplotlib.gridspec as gridspec
 from astropy.io import ascii
+from astropy import units as u
+from astropy.coordinates import SkyCoord
+from astropy.coordinates import Angle
 from scipy.spatial import cKDTree
 from scipy.stats import gaussian_kde
 
 
-def main(file, method='KDE'):
+def main(file, rade_col=None, method='KDE'):
     """
     method: KDE, kNN, kNNInvSum
     """
     print(file)
 
     data = ascii.read(file + ".txt")
-    xs, ys = data['RA(deg)'], data['Dec(deg)']
+
+    ra_col, de_col = rade_col[0], rade_col[1]
+    if rade_col is None:
+        ra_col, de_col = 'RA(deg)', 'Dec(deg)'
+    xs, ys = data[ra_col], data[de_col]
+
+    # Convert h:m:s, d:m:s columns into degrees
+    # hms = Angle((data["hh"], data["mm"], data["ss.ss"]), unit='hourangle')
+    # dms = Angle((data["dd"], data["dm"], data["ds.s"]), unit=u.deg)
+    # cc = SkyCoord(hms, dms, unit=(u.hourangle, u.deg))
+    # xs, ys = cc.ra.value, cc.dec.value
+
+    msk = xs > 0.6
+    xs, ys = xs[msk], ys[msk]
+
     dim = 2
 
     resolution = 200
@@ -25,10 +42,10 @@ def main(file, method='KDE'):
     # xmed, xstd = np.median(xs), np.std(xs)
     # ymed, ystd = np.median(ys), np.std(ys)
     # extent = [
-    #     xmed - 3. * xstd, xmed + 3. * xstd, ymed - 3. * ystd, ymed + 3. * ystd]
+    # xmed - 3. * xstd, xmed + 3. * xstd, ymed - 3. * ystd, ymed + 3. * ystd]
 
     # Using fixed limits so all plots have the same size.
-    extent = [0.39, 0.61, -15.62, -15.31]
+    extent = [0.68, 0.88, -15.7, -15.5]
 
     kde_pars, kNN_pars = [], []
     if method == 'KDE':
@@ -44,9 +61,10 @@ def main(file, method='KDE'):
         # Grid with proper shape.
         grid = np.mgrid[0:resolution, 0:resolution].T.reshape(
             resolution**2, dim)
-        vals = [0, 10, 20, 40]
+        vals = [0, 25, 50, 100]
         kNN_pars = (xv, yv, grid)
 
+    print("Making plot")
     makePlot(
         file, xs, ys, resolution, extent, method, vals, kde_pars, kNN_pars)
 
@@ -132,16 +150,19 @@ def makePlot(
     fig = plt.figure(figsize=(15, 15))
     gs = gridspec.GridSpec(2, 2)
 
+    print("Estimating density map with method: {}".format(method))
     for gs_i, bw_nghbrs in enumerate(vals):
 
         if gs_i == 0:
             ax = plt.subplot(gs[gs_i])
             ax.minorticks_on()
             ax.grid(b=True, which='both', color='gray', linestyle='--', lw=.5)
-            ax.plot(xs, ys, 'k.', markersize=5)
+            ax.plot(xs, ys, 'k.', markersize=5, alpha=.7)
+            # plt.scatter(0.7816250, -15.6237222, marker='x', c='r', s=50)
             ax.set_aspect('equal')
 
         else:
+            print(bw_nghbrs)
             ax = plt.subplot(gs[gs_i])
             ax.minorticks_on()
             if method == 'KDE':
@@ -152,7 +173,8 @@ def makePlot(
                     "Bandwidth: {:.4f} deg".format(scotts_f * bw_nghbrs))
                 ax.imshow(np.rot90(kde), cmap=cm.Blues, extent=extent)
                 ax.contour(x_grid, y_grid, kde, colors='k', linewidths=.3)
-            elif method in ('kNN'):
+                # plt.scatter(0.7816250, -15.6237222, marker='x', c='r', s=50)
+            else:
                 xv, yv, grid = kNN_pars
                 if method == 'kNN':
                     im = kNNDens(xv, yv, grid, resolution, bw_nghbrs)
@@ -161,6 +183,7 @@ def makePlot(
                 ax.imshow(im, origin='lower', extent=extent, cmap=cm.Blues)
                 ax.set_title("Smoothing over {} bw_nghbrs".format(bw_nghbrs))
                 ax.contour(im, colors='k', linewidths=.3, extent=extent)
+                # plt.scatter(0.7816250, -15.6237222, marker='x', c='r', s=50)
 
         plt.xlabel("ra")
         plt.ylabel("dec")
@@ -178,6 +201,6 @@ if __name__ == '__main__':
     # files = (
     #     "rgb8.gc", "rgb8.gclikeall", "rgb8.old", "rgb8.poor", "rgb8.rich",
     #     "rgb8.young")
-    files = ("rgb8.gc2", "rgb8.gclike2")
+    files = ("WLM.081419",) # "rgb8.gc2", "rgb8.gclike2")
     for file in files:
-        main(file)
+        main(file, rade_col=("RA(o)", "Dec(o)"))
